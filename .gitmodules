@@ -1,0 +1,3 @@
+[submodule "addons/skin.fentastic-mod"]
+	path = addons/skin.fentastic-mod
+	url = https://github.com/ok-noronha/skin.fentastic-mod.git
