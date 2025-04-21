@@ -49,6 +49,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public         # <-- change this to your output directory
+          publish_dir: ./     # <-- change this to your output directory
           publish_branch: gh-pages      # default target branch
           # force_orphan: true         # uncomment to force an orphan branch
