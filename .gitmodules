@@ -1,0 +1,4 @@
+
+[submodule "repo/skin.fentastic-mod"]
+	path = repo/skin.fentastic-mod
+	url = https://github.com/ok-noronha/skin.fentastic-mod.git
