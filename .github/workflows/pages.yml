@@ -1,13 +1,13 @@
-name: GitHub Pages Deployment
+name: GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
-  contents: write             # Grant write permissions
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -16,6 +16,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git HTTP settings
+        run: |
+          git config --global http.postBuffer 524288000
+          git config --global http.lowSpeedLimit 0
+          git config --global http.lowSpeedTime 999999
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,15 +31,14 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
+        run: python -m pip install --upgrade pip
 
-      - name: Run _repo_generator.py
+      - name: Run site generator
         run: python _repo_generator.py
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /  # Update to your actual output directory
+          publish_dir: ./
           publish_branch: gh-pages
