@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          apt install git
+          # apt install git
 
       # Step 4: Run the _repo_generator.py script
       - name: Run _repo_generator.py
